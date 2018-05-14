@@ -371,6 +371,42 @@ def new_window(boss, window, payload):
 # }}}
 
 
+# resize_window {{{
+@cmd(
+    'Resize a window this command is run in',
+    options_spec='''\
+--up -u
+Resize window up
+
+
+--right -r
+Resize window right
+
+
+--down -d
+Resize window down
+
+
+--left -l
+Resize window left
+'''
+)
+def cmd_resize_window(global_opts, opts, args):
+    try:
+        return {'up': float(opts.up or 0),
+                'right': float(opts.right or 0),
+                'down': float(opts.down or 0),
+                'left': float(opts.left or 0)}
+    except:
+        raise SystemExit('Adjuestment Invalid')
+
+
+def resize_window(boss, window, payload):
+    # TODO
+    print(payload)
+# }}}
+
+
 # focus_window {{{
 @cmd(
     'Focus the specified window',
